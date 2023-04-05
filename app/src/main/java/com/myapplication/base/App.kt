@@ -14,6 +14,7 @@ import com.myapplication.others.Cons
 
 class App : Application(), LifecycleObserver {
 
+    //This the root of the project.
     companion object {
         lateinit var instance: App
 
