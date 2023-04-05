@@ -83,17 +83,4 @@ open class BaseFragment : Fragment() {
         MyUtils.viewVisible(mainView)
     }
 
-//    fun popUpInternetConnectionDialog() {
-//        InternetConnectionDialog(requireContext(), callback = object : CallBack<Int>() {
-//            override fun onSuccess(t: Int?) {
-//                if (!App.get().isConnected()) {
-//                    popUpInternetConnectionDialog()
-//                    return
-//                }
-//
-//            }
-//        }).show()
-//    }
-
-
 }
