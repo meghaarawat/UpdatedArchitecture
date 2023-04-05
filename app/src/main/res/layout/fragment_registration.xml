@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View" />
+        <variable name="userModel"
+            type="com.myapplication.userAction.register.viewmodel.RegisterVM" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        tools:context=".userAction.register.ui.RegistrationFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextViewHeading"
+                    android:padding="@dimen/padding"
+                    android:text="@string/sign_up"
+                    android:textSize="@dimen/largeTextSize" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilFirstName"
+                    style="@style/TextInputLayoutStyle"
+                    setError="@{userModel.isValidFName}"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginEnd="@dimen/margin"
+                    android:layout_marginBottom="@dimen/margin">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etFirstName"
+                        style="@style/EditTextStyle"
+                        android:text="@={userModel.fName}"
+                        android:hint="@string/first_name"
+                        android:inputType="textPersonName"
+                        android:maxLength="15" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilLastName"
+                    style="@style/TextInputLayoutStyle"
+                    setError="@{userModel.isValidLName}"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginEnd="@dimen/margin"
+                    android:layout_marginBottom="@dimen/margin">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etLastName"
+                        style="@style/EditTextStyle"
+                        android:text="@={userModel.lName}"
+                        android:hint="@string/last_name"
+                        android:inputType="textPersonName"
+                        android:maxLength="15"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilEmailSignup"
+                    style="@style/TextInputLayoutStyle"
+                    setError="@{userModel.isValidEmail}"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginEnd="@dimen/margin"
+                    android:layout_marginBottom="@dimen/margin">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEmailSignup"
+                        style="@style/EditTextStyle"
+                        android:text="@={userModel.email}"
+                        android:hint="@string/email"
+                        android:inputType="textEmailAddress" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilPasswordSignup"
+                    style="@style/TextInputLayoutStyle"
+                    setError="@{userModel.isValidPassword}"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginEnd="@dimen/margin"
+                    android:layout_marginBottom="@dimen/margin">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPasswordSignup"
+                        style="@style/EditTextStyle"
+                        android:text="@={userModel.password}"
+                        android:hint="@string/password"
+                        android:inputType="textPassword" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilConfirmPasswordSignup"
+                    style="@style/TextInputLayoutStyle"
+                    setError="@{userModel.isValidCPassword}"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginEnd="@dimen/margin"
+                    android:layout_marginBottom="@dimen/margin">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etConfirmPasswordSignup"
+                        style="@style/EditTextStyle"
+                        android:text="@={userModel.confirmPassword}"
+                        android:hint="@string/confirm_password"
+                        android:inputType="textPassword" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/buttonSignup"
+                style="@style/ButtonStyle"
+                android:layout_marginBottom="@dimen/margin"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="@dimen/maxMargin"
+                android:layout_marginEnd="@dimen/maxMargin"
+                android:background="@drawable/bg_button">
+
+                <TextView
+                    android:id="@+id/tvSignup"
+                    style="@style/TextViewContent"
+                    android:layout_centerInParent="true"
+                    android:text="@string/sign_up"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/normalTextSize"
+                    android:visibility="visible" />
+
+                <ProgressBar
+                    android:id="@+id/loader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:scaleX="0.6"
+                    android:scaleY="0.6"
+                    android:indeterminateTint="@color/progress_tint"
+                    android:visibility="gone"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tvSignUpLogin"
+                style="@style/TextViewContent"
+                android:text="@string/you_have_an_account"
+                android:layout_marginBottom="@dimen/margin"
+                android:padding="@dimen/smallPadding"
+                android:orientation="horizontal" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>
